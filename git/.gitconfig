@@ -1,0 +1,11 @@
+[core]
+	editor = zed --wait
+
+# Name, email and anything else personal go in ~/.gitconfig.local, which is
+# not part of this repo:
+#
+#   [user]
+#   	name = Your Name
+#   	email = you@example.com
+[include]
+	path = ~/.gitconfig.local

@@ -1,0 +1,119 @@
+// Zed settings. https://zed.dev/docs/reference/all-settings
+//
+// To see every default, run `zed: open default settings` from the command
+// palette (Cmd-Shift-P).
+{
+  // ---------------------------------------------------------------------------
+  // Editor
+  // ---------------------------------------------------------------------------
+
+  // Vim keybindings (normal, insert and visual modes).
+  "vim_mode": true,
+
+  // Font for code. Google Sans Code isn't installed by default:
+  // https://fonts.google.com/specimen/Google+Sans+Code
+  "buffer_font_family": "Google Sans Code",
+  "buffer_font_size": 15.0,
+
+  // Extra space between lines of code, for easier reading.
+  "buffer_line_height": "comfortable",
+
+  // Don't animate the cursor as it moves; it jumps straight to the new spot.
+  "cursor_animation": {
+    "enabled": false
+  },
+
+  // ---------------------------------------------------------------------------
+  // Look
+  // ---------------------------------------------------------------------------
+
+  // Always use the dark theme, Ayu Mirage. "light" is only used if mode is
+  // changed to "light" or "system" (follow macOS).
+  "theme": {
+    "mode": "dark",
+    "light": "One Dark",
+    "dark": "Ayu Mirage",
+  },
+
+  // File icons in the project panel and tabs. Needs the Catppuccin Icons
+  // extension. Both variants are the same, so mode doesn't matter here.
+  "icon_theme": {
+    "mode": "light",
+    "light": "Catppuccin Mocha",
+    "dark": "Catppuccin Mocha"
+  },
+
+  // Size of menus, panels and tabs (code size is buffer_font_size above).
+  "ui_font_size": 16,
+
+  // ---------------------------------------------------------------------------
+  // A quieter UI: hide things I don't use
+  // ---------------------------------------------------------------------------
+
+  // Don't show the current file's name in the status bar (it's in the tab).
+  "status_bar": {
+    "show_active_file": false
+  },
+
+  // Hide the debugger and project-diagnostics buttons.
+  "debugger": {
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
+
+  // Turn off Zed's git integration (I use git from the terminal).
+  "git": {
+    "disable_git": true
+  },
+
+  // Turn off all AI features: assistant panel, inline assist, edit predictions.
+  "disable_ai": true,
+
+  // ---------------------------------------------------------------------------
+  // Windows
+  // ---------------------------------------------------------------------------
+
+  // `zed <folder>` from the terminal opens in the current window instead of
+  // a new one.
+  "cli_default_open_behavior": "existing_window",
+
+  // On startup, reopen every window (workspace) that was open when Zed quit.
+  // Quit with Cmd-Q to keep them all: closing windows one by one leaves only
+  // the last one to restore.
+  "restore_on_startup": "last_session",
+
+  // A new window starts with an empty untitled file, not the recent-projects
+  // launchpad.
+  "on_new_window": "empty_tab",
+
+  // Closing the last window quits Zed, rather than leaving it running in the
+  // Dock like most macOS apps.
+  "on_last_window_closed": "quit_app",
+
+  // ---------------------------------------------------------------------------
+  // Privacy and network
+  // ---------------------------------------------------------------------------
+
+  // Don't send crash reports or anonymous usage data to Zed, and opt out of
+  // data retention for Anthropic-powered features.
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+
+  // No proxy.
+  "proxy": "",
+
+  // WARNING: think before copying this one. Normally Zed opens an unfamiliar
+  // folder in restricted mode and asks before trusting it. Until you say yes,
+  // it doesn't apply the project's own .zed settings or download and start
+  // language servers and MCP servers. true skips that check for every folder,
+  // including code you've just cloned from someone else. Leave it out (the
+  // default is false) unless you only open code you trust.
+  "session": {
+    "trust_all_worktrees": true
+  },
+}
