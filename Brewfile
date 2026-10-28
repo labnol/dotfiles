@@ -1,6 +1,6 @@
 # Install with: brew bundle --file=Brewfile
 
-# Needed by zsh/.zshrc
+# Needed by .zshrc
 brew "pure"                     # minimal prompt
 brew "fzf"                      # fuzzy finder (Ctrl-R, Ctrl-T, Alt-C)
 brew "zoxide"                   # `z foo` jumps to frequent folders

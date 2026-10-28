@@ -4,20 +4,20 @@ My shell, git, vim and [Zed](https://zed.dev) settings for macOS (Apple Silicon)
 
 ## What's inside
 
-| Path                | Goes to                       | What it does                                                                                                                                                                                     |
-| ------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `zsh/.zshrc`        | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, plus fzf and zoxide |
-| `zsh/.zprofile`     | `~/.zprofile`                 | Homebrew and Docker on `PATH`                                                                                                                                                                    |
-| `git/.gitconfig`    | `~/.gitconfig`                | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                             |
-| `vim/.vimrc`        | `~/.vimrc`                    | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                           |
-| `zed/settings.json` | `~/.config/zed/settings.json` | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                       |
-| `Brewfile`          |                               | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                     |
+| Path                 | Goes to                       | What it does                                                                                                                                                                                     |
+| -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.zshrc`             | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, plus fzf and zoxide |
+| `.zprofile`          | `~/.zprofile`                 | Homebrew and Docker on `PATH`                                                                                                                                                                    |
+| `.gitconfig`         | `~/.gitconfig`                | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                             |
+| `.vimrc`             | `~/.vimrc`                    | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                           |
+| `zed-settings.jsonc` | `~/.config/zed/settings.json` | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                       |
+| `Brewfile`           |                               | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                     |
 
 `.zshrc`, `.vimrc` and the Zed settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
 
 ## Highlights
 
-The bits of `zsh/.zshrc` most worth stealing. Each one stands alone, so you can paste it into your own `.zshrc`.
+The bits of `.zshrc` most worth stealing. Each one stands alone, so you can paste it into your own `.zshrc`.
 
 **nvm without the slow startup.** Loading nvm normally adds about 200ms to every new shell. Instead, `.zshrc` puts your default Node version on `PATH` straight away, so `node`, `npm`, `npx` and global tools work immediately, and only loads nvm the first time you type `nvm`. See the "Node.js (nvm, loaded lazily)" section.
 
@@ -39,7 +39,7 @@ The `.zshrc` expects [Homebrew](https://brew.sh), [Oh My Zsh](https://ohmyz.sh) 
 brew bundle --file=Brewfile
 ```
 
-If you use `git/.gitconfig` as is, add your identity:
+If you use `.gitconfig` as is, add your identity:
 
 ```bash
 git config --file ~/.gitconfig.local user.name  "Your Name"
