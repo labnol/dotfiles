@@ -32,7 +32,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Dark",
-    "dark": "Ayu Mirage",
+    "dark": "Ayu Mirage"
   },
 
   // File icons in the project panel and tabs. Needs the Catppuccin Icons
@@ -105,15 +105,5 @@
   },
 
   // No proxy.
-  "proxy": "",
-
-  // WARNING: think before copying this one. Normally Zed opens an unfamiliar
-  // folder in restricted mode and asks before trusting it. Until you say yes,
-  // it doesn't apply the project's own .zed settings or download and start
-  // language servers and MCP servers. true skips that check for every folder,
-  // including code you've just cloned from someone else. Leave it out (the
-  // default is false) unless you only open code you trust.
-  "session": {
-    "trust_all_worktrees": true
-  },
+  "proxy": ""
 }

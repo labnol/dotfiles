@@ -4,14 +4,14 @@ My shell, git, vim and [Zed](https://zed.dev) settings for macOS (Apple Silicon)
 
 ## What's inside
 
-| Path | Goes to | What it does |
-| --- | --- | --- |
-| `zsh/.zshrc` | `~/.zshrc` | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, plus fzf and zoxide |
-| `zsh/.zprofile` | `~/.zprofile` | Homebrew and Docker on `PATH` |
-| `git/.gitconfig` | `~/.gitconfig` | Zed as the git editor; loads your identity from `~/.gitconfig.local` |
-| `vim/.vimrc` | `~/.vimrc` | Line numbers, cursor line, soft wrap, system clipboard |
-| `zed/settings.json` | `~/.config/zed/settings.json` | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme |
-| `Brewfile` | | The CLI tools `.zshrc` needs, plus my extras (commented out) |
+| Path                | Goes to                       | What it does                                                                                                                                                                                     |
+| ------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `zsh/.zshrc`        | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, plus fzf and zoxide |
+| `zsh/.zprofile`     | `~/.zprofile`                 | Homebrew and Docker on `PATH`                                                                                                                                                                    |
+| `git/.gitconfig`    | `~/.gitconfig`                | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                             |
+| `vim/.vimrc`        | `~/.vimrc`                    | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                           |
+| `zed/settings.json` | `~/.config/zed/settings.json` | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                       |
+| `Brewfile`          |                               | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                     |
 
 `.zshrc`, `.vimrc` and the Zed settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
 
@@ -57,7 +57,6 @@ These files are loaded if they exist, and they're never committed:
 
 - The `rm` override needs macOS 15 or later, for the built-in `trash` command. It only applies in interactive shells. Use `command rm` to delete permanently.
 - The Zed config uses the [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) font and the Catppuccin icon theme extension. Install both, or change those lines.
-- The Zed config sets `trust_all_worktrees`, which skips Zed's safety prompt for unfamiliar folders. Read the comment above it before copying.
 - nvm is optional. Without it, the Node section does nothing.
 
 ## License
