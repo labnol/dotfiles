@@ -6,6 +6,21 @@
 #   - brew install pure fzf zoxide zsh-syntax-highlighting
 #   - nvm         https://github.com/nvm-sh/nvm (optional)
 #   - macOS 15+ for the built-in `trash` command used by rm below
+#   - gcloud, firebase, gh   only for the Google Cloud & Firebase shortcuts (optional)
+#
+# Sections:
+#   Environment · Oh My Zsh · History · Prompt · Node.js · Aliases · Safer rm · Tools · Local overrides
+
+# ----------------------------------------------------------------------------
+# Environment
+# ----------------------------------------------------------------------------
+
+# Editor for git, crontab, Ctrl-X Ctrl-E, etc.
+export EDITOR="zed --wait"
+export VISUAL="zed --wait"
+
+# Personal scripts and tools installed per user (e.g. by pipx or uv).
+export PATH="$HOME/.local/bin:$PATH"
 
 # ----------------------------------------------------------------------------
 # Oh My Zsh
@@ -42,55 +57,6 @@ setopt hist_ignore_all_dups  # running a command again removes its older copy
 setopt hist_save_no_dups     # never write duplicates to ~/.zsh_history
 setopt hist_find_no_dups     # Up-arrow and Ctrl-R skip repeats
 setopt hist_reduce_blanks    # "ls   -la" is saved as "ls -la"
-
-# ----------------------------------------------------------------------------
-# Prompt
-# ----------------------------------------------------------------------------
-
-# Pure: a minimal prompt that shows the folder, git branch and status, and how
-# long slow commands took. https://github.com/sindresorhus/pure
-autoload -U promptinit; promptinit
-prompt pure
-
-# ----------------------------------------------------------------------------
-# Node.js (nvm, loaded lazily)
-# ----------------------------------------------------------------------------
-
-# Loading nvm.sh takes ~200ms, which used to be most of shell startup. Instead,
-# put the default Node version on PATH right away (so node, npm, npx and
-# global npm tools work), and only load nvm the first time `nvm` is run.
-export NVM_DIR="$HOME/.nvm"
-
-# Find the newest installed Node matching nvm's default alias (e.g. "24" ->
-# v24.22.0) and add its bin folder to the front of PATH. Runs once, at startup.
-() {
-  local default_node=( $NVM_DIR/versions/node/v${$(<$NVM_DIR/alias/default 2>/dev/null)#v}*(N/nOn[1]) )
-  [[ -n $default_node ]] && path=("$default_node/bin" $path)
-}
-
-# Placeholder `nvm`: on first use it removes itself, loads the real nvm and its
-# tab completion, then passes the command through.
-nvm() {
-  unfunction nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  nvm "$@"
-}
-
-# ----------------------------------------------------------------------------
-# Aliases
-# ----------------------------------------------------------------------------
-
-# npm shortcuts. Tab completion still works, e.g. `nr <Tab>` lists scripts.
-alias nr="npm run"
-alias nb="npm run build"
-alias nd="npm run dev"
-alias ni="npm install"
-
-# Check for newer versions of dependencies (ncu), or update package.json to
-# them (ncuu); run `ni` afterwards to install.
-alias ncu="npx npm-check-updates"
-alias ncuu="npx npm-check-updates -u"
 
 # In the terminal, `history` shows the last 30 commands (`history 1` shows
 # all, `history -100` the last 100), colored to match the typing highlights:
@@ -145,6 +111,106 @@ history() {
 # Full history ("history all"), colored.
 alias hall="history 1"
 
+# Search all of history, ignoring case: `hg firebase`.
+hg() { history | grep -i "$@" }
+
+# ----------------------------------------------------------------------------
+# Prompt
+# ----------------------------------------------------------------------------
+
+# Pure: a minimal prompt that shows the folder, git branch and status, and how
+# long slow commands took. https://github.com/sindresorhus/pure
+autoload -U promptinit; promptinit
+prompt pure
+
+# ----------------------------------------------------------------------------
+# Node.js (nvm, loaded lazily)
+# ----------------------------------------------------------------------------
+
+# Loading nvm.sh takes ~200ms, which used to be most of shell startup. Instead,
+# put the default Node version on PATH right away (so node, npm, npx and
+# global npm tools work), and only load nvm the first time `nvm` is run.
+export NVM_DIR="$HOME/.nvm"
+
+# Find the newest installed Node matching nvm's default alias (e.g. "24" ->
+# v24.22.0) and add its bin folder to the front of PATH. Runs once, at startup.
+() {
+  local default_node=( $NVM_DIR/versions/node/v${$(<$NVM_DIR/alias/default 2>/dev/null)#v}*(N/nOn[1]) )
+  [[ -n $default_node ]] && path=("$default_node/bin" $path)
+}
+
+# Placeholder `nvm`: on first use it removes itself, loads the real nvm and its
+# tab completion, then passes the command through.
+nvm() {
+  unfunction nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+
+# ----------------------------------------------------------------------------
+# Aliases
+# ----------------------------------------------------------------------------
+
+# --- npm --------------------------------------------------------------------
+
+# Tab completion still works, e.g. `nr <Tab>` lists scripts.
+alias nr="npm run"
+alias nb="npm run build"
+alias nd="npm run dev"
+alias ni="npm install"
+alias nfresh="rm -rf node_modules package-lock.json && npm install"  # clean reinstall
+
+# Check for newer versions of dependencies (ncu), update package.json to them
+# (ncuu), or update and install in one go (ncui).
+alias ncu="npx npm-check-updates"
+alias ncuu="npx npm-check-updates -u"
+alias ncui="npx npm-check-updates -u && npm install"
+
+# --- Local dev servers ------------------------------------------------------
+
+# What's listening on a port: `port 3000`
+port() { lsof -nP -iTCP:"$1" -sTCP:LISTEN }
+
+# End whatever is listening on a port: `killport 3000`
+killport() {
+  local pids=( $(lsof -t -iTCP:"$1" -sTCP:LISTEN) )
+  if (( ! $#pids )); then
+    echo "Nothing listening on port $1"
+    return 1
+  fi
+  kill $pids && echo "Stopped process $pids on port $1"
+}
+
+# --- Google Cloud & Firebase ------------------------------------------------
+
+# Which account is signed in to gcloud, Firebase and GitHub.
+alias whoami-all="gcloud auth list; firebase login:list; gh auth status"
+
+# Put a Google access token in $TOKEN for curl calls.
+alias gtoken='export TOKEN=$(gcloud auth print-access-token)'
+
+# Deploy only Firebase hosting.
+alias fdh="firebase deploy --only hosting"
+
+# --- macOS ------------------------------------------------------------------
+
+# Update Homebrew packages and gcloud components.
+alias up="brew update && brew upgrade && gcloud components update --quiet"
+
+# Open the current folder in Finder.
+alias o="open ."
+
+# --- Shell config -----------------------------------------------------------
+
+# Edit this file. Plain `zed` (not $EDITOR, which has --wait) so the terminal
+# stays free while it's open.
+alias zshconfig="zed ~/.zshrc"
+
+# Start a fresh shell with the new config. Unlike `source ~/.zshrc`, this
+# doesn't stack duplicate PATH entries or keep old aliases around.
+alias zshreload="exec zsh"
+
 # ----------------------------------------------------------------------------
 # Safer rm
 # ----------------------------------------------------------------------------
@@ -172,17 +238,6 @@ rm() {
   done
   trash "${files[@]}"
 }
-
-# ----------------------------------------------------------------------------
-# Environment
-# ----------------------------------------------------------------------------
-
-# Editor for git, crontab, Ctrl-X Ctrl-E, etc.
-export EDITOR="zed --wait"
-export VISUAL="zed --wait"
-
-# Personal scripts and tools installed per user (e.g. by pipx or uv).
-export PATH="$HOME/.local/bin:$PATH"
 
 # ----------------------------------------------------------------------------
 # Tools

@@ -6,7 +6,7 @@ My shell, git, vim and [Zed](https://zed.dev) settings for macOS (Apple Silicon)
 
 | Path                 | Goes to                       | What it does                                                                                                                                                                                     |
 | -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.zshrc`             | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, plus fzf and zoxide |
+| `.zshrc`             | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, npm and port shortcuts, plus fzf and zoxide |
 | `.zprofile`          | `~/.zprofile`                 | Homebrew and Docker on `PATH`                                                                                                                                                                    |
 | `.gitconfig`         | `~/.gitconfig`                | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                             |
 | `.vimrc`             | `~/.vimrc`                    | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                           |
@@ -23,11 +23,13 @@ The bits of `.zshrc` most worth stealing. Each one stands alone, so you can past
 
 **An `rm` you can undo.** In interactive shells, `rm` moves files to the Bin using macOS's built-in `trash` command (macOS 15+), so mistakes can be recovered. Habits like `rm -rf node_modules` still work: flags trash doesn't accept are dropped. Scripts still get the real `rm`, and `command rm` deletes permanently. See the "Safer rm" section.
 
-**A colored, shorter `history`.** `history` shows the last 30 commands, colored like the syntax highlighting as you type: commands green, flags cyan, quoted text yellow, and `|`, `&&`, `;` magenta. `history 1` (or `hall`) shows everything. When piped, the output is plain and complete, so `history | grep foo` still searches all of it. Needs Oh My Zsh, because it wraps Oh My Zsh's `omz_history`. See the "Aliases" section.
+**A colored, shorter `history`.** `history` shows the last 30 commands, colored like the syntax highlighting as you type: commands green, flags cyan, quoted text yellow, and `|`, `&&`, `;` magenta. `history 1` (or `hall`) shows everything. When piped, the output is plain and complete, so `history | grep foo` still searches all of it, and `hg foo` is a shortcut for that. Needs Oh My Zsh, because it wraps Oh My Zsh's `omz_history`. See the "History" section.
 
 **No duplicate history entries.** Four `setopt` lines keep one copy of each command, so Up-arrow and Ctrl-R don't step through the same command over and over. See the "History" section.
 
-**npm shortcuts.** `nr` (npm run), `nb` (build), `nd` (dev) and `ni` (install), plus `ncu` / `ncuu` to check for and apply dependency updates. Tab completion still works, so `nr <Tab>` lists your scripts.
+**npm shortcuts.** `nr` (npm run), `nb` (build), `nd` (dev) and `ni` (install), plus `ncu` / `ncuu` to check for and apply dependency updates, and `ncui` to apply and install them in one go. `nfresh` deletes `node_modules` and `package-lock.json` and reinstalls. Tab completion still works, so `nr <Tab>` lists your scripts.
+
+**Free up a port.** When a dev server won't start because "port already in use", `port 3000` shows what's listening there and `killport 3000` stops it. See the "Local dev servers" part of the "Aliases" section.
 
 ## Using these files
 
