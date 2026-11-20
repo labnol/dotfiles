@@ -1,6 +1,15 @@
 [core]
 	editor = zed --wait
 
+# Use the GitHub CLI for GitHub logins, so git push over HTTPS uses your
+# `gh auth login` session. The empty helper line clears any other helper first.
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
 # Name, email and anything else personal go in ~/.gitconfig.local, which is
 # not part of this repo:
 #

@@ -10,6 +10,10 @@ brew "zsh-syntax-highlighting"  # colors commands as you type
 # brew "gh"                     # GitHub CLI
 # brew "docker"                 # Docker CLI
 # brew "ffmpeg"                 # audio/video conversion
+# brew "ghostscript"            # PDF and PostScript tools
 # brew "yt-dlp"                 # audio/video downloader
 # cask "gcloud-cli"             # Google Cloud CLI
 # cask "purge"                  # clears caches and junk files
+# cask "1password-cli"          # `op` command for 1Password
+# cask "codex"                  # OpenAI Codex CLI
+# cask "codexbar"               # Codex and Claude usage in the menu bar
