@@ -1,0 +1,35 @@
+// Herdr settings. https://herdr.dev
+//
+// Goes to ~/.config/herdr-app/settings.json. Herdr only reads plain JSON, so
+// remove these comments when you copy it (a file with comments is ignored and
+// the error is written to settings.error). Changes apply as soon as you save.
+{
+  // Scale of the whole app: terminals, sidebar, tabs and panels.
+  "zoom": 1,
+
+  // Play a sound when an agent finishes or needs you while you're not looking.
+  "sounds": {
+    "enabled": true
+  },
+
+  // Terminal font. Google Sans Code isn't installed by default:
+  // https://fonts.google.com/specimen/Google+Sans+Code
+  "font": "Google Sans Code",
+  "font_size": 15,
+
+  // A little heavier than Herdr's default of 500 (Medium).
+  "font_weight": 550,
+
+  // Draw =>, !== and -> as single symbols. Off by default.
+  "font_ligatures": true,
+
+  // Selecting text with the mouse doesn't replace the clipboard; press Cmd-C
+  // to copy the selection.
+  "copy_on_select": false,
+
+  // Always dark, whatever the system appearance.
+  "appearance": "dark",
+
+  // Don't send anonymous usage counts.
+  "telemetry": false
+}

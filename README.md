@@ -1,6 +1,6 @@
 # dotfiles
 
-My shell, git, vim, [Zed](https://zed.dev), VS Code and [Cursor](https://cursor.com) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
+My shell, git, vim, [Zed](https://zed.dev), VS Code, [Cursor](https://cursor.com) and [Herdr](https://herdr.dev) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
 
 ## What's inside
 
@@ -13,9 +13,10 @@ My shell, git, vim, [Zed](https://zed.dev), VS Code and [Cursor](https://cursor.
 | `zed-settings.jsonc`    | `~/.config/zed/settings.json`                             | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                                               |
 | `vscode-settings.jsonc` | `~/Library/Application Support/Code/User/settings.json`   | Prettier on save, Dracula theme, a quiet writing layout for Markdown and MDX, screenshot paste into `images/`, Copilot in Markdown                                                                                       |
 | `cursor-settings.jsonc` | `~/Library/Application Support/Cursor/User/settings.json` | The same editor and Markdown setup as VS Code, with Solarized Light, darker prose text and Cursor's agent settings                                                                                                       |
+| `herdr-settings.jsonc`  | `~/.config/herdr-app/settings.json`                       | Google Sans Code at 15px with ligatures, no copy on select, always dark, agent sounds on, telemetry off (remove the comments when you copy it)                                                                            |
 | `Brewfile`              |                                                           | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                                             |
 
-`.zshrc`, `.vimrc` and the Zed, VS Code and Cursor settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
+`.zshrc`, `.vimrc` and the Zed, VS Code, Cursor and Herdr settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
 
 ## Highlights
 
@@ -62,6 +63,7 @@ These files are loaded if they exist, and they're never committed:
 - The `rm` override needs macOS 15 or later, for the built-in `trash` command. It only applies in interactive shells. Use `command rm` to delete permanently.
 - The Zed config uses the [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) font and the Catppuccin icon theme extension. Install both, or change those lines.
 - The VS Code and Cursor settings use the same font, plus these extensions: Prettier (`esbenp.prettier-vscode`), MDX (`unifiedjs.vscode-mdx`) and Code Spell Checker (`streetsidesoftware.code-spell-checker`). VS Code also uses Dracula Official (`dracula-theme.theme-dracula`).
+- Herdr only reads plain JSON, so strip the comments from `herdr-settings.jsonc` before you paste it. If you don't, Herdr ignores the file and writes the reason to `~/.config/herdr-app/settings.error`. It uses Google Sans Code too.
 - nvm is optional. Without it, the Node section does nothing.
 
 ## License
