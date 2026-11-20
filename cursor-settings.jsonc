@@ -1,0 +1,173 @@
+// Cursor settings. Cursor is built on VS Code, so most of these are VS Code
+// settings: https://code.visualstudio.com/docs/getstarted/settings
+//
+// Goes to ~/Library/Application Support/Cursor/User/settings.json
+// The Markdown section is tuned for writing docs in an Astro Starlight site.
+{
+  // ---------------------------------------------------------------------------
+  // Editor
+  // ---------------------------------------------------------------------------
+
+  // Font for code. Google Sans Code isn't installed by default:
+  // https://fonts.google.com/specimen/Google+Sans+Code
+  "editor.fontFamily": "\"Google Sans Code\", Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
+
+  // Wrap long lines at the window edge instead of scrolling sideways.
+  "editor.wordWrap": "on",
+
+  // Format every file with Prettier when you save. Needs the Prettier extension.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Show small changes inside the line in inline diffs, not as whole changed lines.
+  "diffEditor.experimental.useTrueInlineView": true,
+
+  // ---------------------------------------------------------------------------
+  // Look
+  // ---------------------------------------------------------------------------
+
+  // Always Solarized Light, even when macOS is in dark mode.
+  "workbench.colorTheme": "Solarized Light",
+  "window.autoDetectColorScheme": false,
+  "workbench.iconTheme": "vscode-modern-icons",
+
+  // Solarized Light's body text is a light grey. Darken plain text in Markdown
+  // and MDX only; headings, bold and code keep their theme colors.
+  "editor.tokenColorCustomizations": {
+    "[Solarized Light]": {
+      "textMateRules": [
+        {
+          "scope": ["text.html.markdown", "source.mdx"],
+          "settings": { "foreground": "#2f3f45" }
+        }
+      ]
+    }
+  },
+
+  // ---------------------------------------------------------------------------
+  // Markdown and MDX: a quieter editor for writing prose
+  // ---------------------------------------------------------------------------
+
+  "[markdown]": {
+    // Hide the code-editor chrome: line numbers, fold arrows, the left margin
+    // and indent guides.
+    "editor.lineNumbers": "off",
+    "editor.folding": false,
+    "editor.glyphMargin": false,
+    "editor.guides.indentation": false,
+
+    // Bigger text with more space between lines, for reading paragraphs.
+    "editor.fontSize": 16,
+    "editor.lineHeight": 1.7,
+
+    // Wrap at 90 characters, or at the window edge if that comes first.
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 90,
+
+    // No highlight band on the line with the cursor.
+    "editor.renderLineHighlight": "none",
+
+    // No word-suggestion popup while typing, so it doesn't fight Cursor Tab.
+    "editor.quickSuggestions": { "other": false, "comments": false, "strings": false },
+
+    // Type a snippet's prefix (shot, tip, note) and press Tab to expand it.
+    "editor.tabCompletion": "onlySnippets"
+  },
+  // Same as [markdown], for .mdx files. Needs the MDX extension.
+  "[mdx]": {
+    "editor.lineNumbers": "off",
+    "editor.folding": false,
+    "editor.glyphMargin": false,
+    "editor.guides.indentation": false,
+    "editor.fontSize": 16,
+    "editor.lineHeight": 1.7,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 90,
+    "editor.renderLineHighlight": "none",
+    "editor.quickSuggestions": { "other": false, "comments": false, "strings": false },
+    "editor.tabCompletion": "onlySnippets"
+  },
+
+  // Paste a screenshot into a .md file and it's saved to images/ next to the
+  // doc, with the ![](images/...) link written for you.
+  "markdown.copyFiles.destination": { "**/*.md": "images/" },
+
+  // Underline broken image paths and #heading links. Links starting with /
+  // are site URLs, not files, so they're skipped.
+  "markdown.validate.enabled": true,
+  "markdown.validate.ignoredLinks": ["/**"],
+
+  // When you move or rename a .md file or image, offer to fix links to it.
+  "markdown.updateLinksOnFileMove.enabled": "prompt",
+
+  // Spell check only Markdown and MDX, not code. Needs Code Spell Checker.
+  "cSpell.enabledFileTypes": { "*": false, "markdown": true, "mdx": true },
+
+  // ---------------------------------------------------------------------------
+  // Files and search
+  // ---------------------------------------------------------------------------
+
+  // Leave dependencies and tests out of search results and Go to File (Cmd-P).
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.test.js": true,
+    "**/*.test.ts": true
+  },
+
+  // Suggest keywords in the Search view as you type.
+  "search.searchView.keywordSuggestions": true,
+
+  // Don't ask before pasting files copied in Finder into the file explorer.
+  "explorer.confirmPasteNative": false,
+
+  // Open Ghostty for "Open in External Terminal".
+  "terminal.external.osxExec": "Ghostty.app",
+
+  // Don't suggest extensions based on the files you open.
+  "extensions.ignoreRecommendations": true,
+
+  // ---------------------------------------------------------------------------
+  // Git
+  // ---------------------------------------------------------------------------
+
+  // Find the git repo even when you open a subfolder of it.
+  "git.openRepositoryInParentFolders": "always",
+
+  // Fetch from the remote in the background, and sync without asking first.
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // Commit all changes when nothing is staged.
+  "git.enableSmartCommit": true,
+
+  // Show one repository at a time in Source Control.
+  "scm.repositories.selectionMode": "single",
+
+  // ---------------------------------------------------------------------------
+  // AI
+  // ---------------------------------------------------------------------------
+
+  // Cursor Tab (AI autocomplete) everywhere except plain text files.
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+
+  // A message sent while the agent is working steers the current run instead
+  // of waiting in a queue.
+  "cursor.composer.queueMessageDefaultBehavior": "steer",
+  "cursor.composer.queueManualSendBehavior2": "steer",
+
+  // Chime when the agent finishes, keep chat 800px wide, always show usage.
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "cursor.chatMaxWidth": 800,
+  "cursor.composer.usageSummaryDisplay": "always",
+
+  // Claude Code: open in a new editor tab, archive idle sessions after 2 days,
+  // Cmd-N for a new conversation, and no onboarding checklist.
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.archiveInactiveSessions": 2,
+  "claudeCode.enableNewConversationShortcut": true,
+  "claudeCode.hideOnboarding": true
+}

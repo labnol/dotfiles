@@ -1,19 +1,21 @@
 # dotfiles
 
-My shell, git, vim and [Zed](https://zed.dev) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
+My shell, git, vim, [Zed](https://zed.dev), VS Code and [Cursor](https://cursor.com) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
 
 ## What's inside
 
-| Path                 | Goes to                       | What it does                                                                                                                                                                                     |
-| -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.zshrc`             | `~/.zshrc`                    | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, npm and port shortcuts, plus fzf and zoxide |
-| `.zprofile`          | `~/.zprofile`                 | Homebrew and Docker on `PATH`                                                                                                                                                                    |
-| `.gitconfig`         | `~/.gitconfig`                | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                             |
-| `.vimrc`             | `~/.vimrc`                    | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                           |
-| `zed-settings.jsonc` | `~/.config/zed/settings.json` | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                       |
-| `Brewfile`           |                               | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                     |
+| Path                    | Goes to                                                   | What it does                                                                                                                                                                                                             |
+| ----------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.zshrc`                | `~/.zshrc`                                                | Oh My Zsh with the [Pure](https://github.com/sindresorhus/pure) prompt, history without duplicates, lazy-loaded nvm, colored `history`, an `rm` that moves files to the Bin, npm and port shortcuts, plus fzf and zoxide |
+| `.zprofile`             | `~/.zprofile`                                             | Homebrew and Docker on `PATH`                                                                                                                                                                                            |
+| `.gitconfig`            | `~/.gitconfig`                                            | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                                                     |
+| `.vimrc`                | `~/.vimrc`                                                | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                                                   |
+| `zed-settings.jsonc`    | `~/.config/zed/settings.json`                             | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                                               |
+| `vscode-settings.jsonc` | `~/Library/Application Support/Code/User/settings.json`   | Prettier on save, Dracula theme, a quiet writing layout for Markdown and MDX, screenshot paste into `images/`, Copilot in Markdown                                                                                       |
+| `cursor-settings.jsonc` | `~/Library/Application Support/Cursor/User/settings.json` | The same editor and Markdown setup as VS Code, with Solarized Light, darker prose text and Cursor's agent settings                                                                                                       |
+| `Brewfile`              |                                                           | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                                             |
 
-`.zshrc`, `.vimrc` and the Zed settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
+`.zshrc`, `.vimrc` and the Zed, VS Code and Cursor settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
 
 ## Highlights
 
@@ -59,6 +61,7 @@ These files are loaded if they exist, and they're never committed:
 
 - The `rm` override needs macOS 15 or later, for the built-in `trash` command. It only applies in interactive shells. Use `command rm` to delete permanently.
 - The Zed config uses the [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) font and the Catppuccin icon theme extension. Install both, or change those lines.
+- The VS Code and Cursor settings use the same font, plus these extensions: Prettier (`esbenp.prettier-vscode`), MDX (`unifiedjs.vscode-mdx`) and Code Spell Checker (`streetsidesoftware.code-spell-checker`). VS Code also uses Dracula Official (`dracula-theme.theme-dracula`).
 - nvm is optional. Without it, the Node section does nothing.
 
 ## License
