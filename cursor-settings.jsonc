@@ -111,9 +111,10 @@
   // Files and search
   // ---------------------------------------------------------------------------
 
-  // Leave dependencies and tests out of search results and Go to File (Cmd-P).
+  // Leave dependencies, build output and tests out of search results and Go to File (Cmd-P).
   "search.exclude": {
     "**/node_modules": true,
+    "**/dist": true,
     "**/*.test.js": true,
     "**/*.test.ts": true
   },
