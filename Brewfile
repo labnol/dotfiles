@@ -6,6 +6,9 @@ brew "fzf"                      # fuzzy finder (Ctrl-R, Ctrl-T, Alt-C)
 brew "zoxide"                   # `z foo` jumps to frequent folders
 brew "zsh-syntax-highlighting"  # colors commands as you type
 
+# Needed by .tmux.conf
+brew "sesh"                     # session picker; uses fzf and zoxide
+
 # My extras. Not needed by anything above; uncomment the ones you want.
 # brew "gh"                     # GitHub CLI
 # brew "docker"                 # Docker CLI
