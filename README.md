@@ -66,6 +66,7 @@ These files are loaded if they exist, and they're never committed:
 - The VS Code and Cursor settings use the same font, plus these extensions: Prettier (`esbenp.prettier-vscode`), MDX (`unifiedjs.vscode-mdx`) and Code Spell Checker (`streetsidesoftware.code-spell-checker`). VS Code also uses Dracula Official (`dracula-theme.theme-dracula`).
 - Herdr only reads plain JSON, so strip the comments from `herdr-settings.jsonc` before you paste it. If you don't, Herdr ignores the file and writes the reason to `~/.config/herdr-app/settings.error`. It uses Google Sans Code too.
 - The session picker in `.tmux.conf` (prefix + s) needs [sesh](https://github.com/joshmedeski/sesh), fzf and zoxide, which are all in the Brewfile.
+- `.tmux.conf` loads its plugins with [TPM](https://github.com/tmux-plugins/tpm). Run `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`, start tmux, then press prefix + I to install them. tmux-resurrect and tmux-continuum save your sessions every 15 minutes and restore them when tmux starts.
 - nvm is optional. Without it, the Node section does nothing.
 
 ## License
