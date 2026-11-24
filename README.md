@@ -1,6 +1,6 @@
 # dotfiles
 
-My shell, git, vim, [Zed](https://zed.dev), VS Code, [Cursor](https://cursor.com) and [Herdr](https://herdr.dev) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
+My shell, git, vim, tmux, [Zed](https://zed.dev), VS Code, [Cursor](https://cursor.com) and [Herdr](https://herdr.dev) settings for macOS (Apple Silicon). Copy whichever files or sections you like into your own config.
 
 ## What's inside
 
@@ -10,13 +10,14 @@ My shell, git, vim, [Zed](https://zed.dev), VS Code, [Cursor](https://cursor.com
 | `.zprofile`             | `~/.zprofile`                                             | Homebrew and Docker on `PATH`                                                                                                                                                                                            |
 | `.gitconfig`            | `~/.gitconfig`                                            | Zed as the git editor; loads your identity from `~/.gitconfig.local`                                                                                                                                                     |
 | `.vimrc`                | `~/.vimrc`                                                | Line numbers, cursor line, soft wrap, system clipboard                                                                                                                                                                   |
+| `.tmux.conf`            | `~/.tmux.conf`                                            | Shift+Enter, notifications and clipboard for [Claude Code](https://claude.com/claude-code) inside tmux, plus 24-bit color and a longer scrollback                                                                        |
 | `zed-settings.jsonc`    | `~/.config/zed/settings.json`                             | Vim mode, AI and telemetry off, quiet UI, Ayu Mirage theme                                                                                                                                                               |
 | `vscode-settings.jsonc` | `~/Library/Application Support/Code/User/settings.json`   | Prettier on save, Dracula theme, a quiet writing layout for Markdown and MDX, screenshot paste into `images/`, Copilot in Markdown                                                                                       |
 | `cursor-settings.jsonc` | `~/Library/Application Support/Cursor/User/settings.json` | The same editor and Markdown setup as VS Code, with Solarized Light, darker prose text and Cursor's agent settings                                                                                                       |
 | `herdr-settings.jsonc`  | `~/.config/herdr-app/settings.json`                       | Google Sans Code at 15px with ligatures, no copy on select, always dark, agent sounds on, telemetry off (remove the comments when you copy it)                                                                            |
 | `Brewfile`              |                                                           | The CLI tools `.zshrc` needs, plus my extras (commented out)                                                                                                                                                             |
 
-`.zshrc`, `.vimrc` and the Zed, VS Code, Cursor and Herdr settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
+`.zshrc`, `.vimrc`, `.tmux.conf` and the Zed, VS Code, Cursor and Herdr settings have a comment on every setting explaining what it does, so they're worth reading even if you don't copy them.
 
 ## Highlights
 
