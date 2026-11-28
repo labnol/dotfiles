@@ -35,6 +35,8 @@ The bits of `.zshrc` most worth stealing. Each one stands alone, so you can past
 
 **Free up a port.** When a dev server won't start because "port already in use", `port 3000` shows what's listening there and `killport 3000` stops it. See the "Local dev servers" part of the "Aliases" section.
 
+**Claude Code shortcuts.** `c` starts a session, `cc` continues the last one in this folder and `cr` picks one to resume. `cw` runs in its own git worktree, `cplan` starts in plan mode, `cpr 21` resumes the session linked to a PR, and `cbg` / `ca` start and list background sessions. Without opening a session, `ask` gives a quick answer and `think` takes longer for harder questions (both fine with `?` in them), `cmsg` writes a commit message for your staged changes, and `npm run build 2>&1 | why` explains an error. `cc` takes the place of the C compiler only when you type it yourself; scripts still get the real one. See the "Claude Code" part of the "Aliases" section.
+
 ## Using these files
 
 Open a file on GitHub and copy the parts you want into the matching file in your home folder (see the "Goes to" column above). Back up your own file first if you're replacing it wholesale.

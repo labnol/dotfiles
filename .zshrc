@@ -182,6 +182,47 @@ killport() {
   kill $pids && echo "Stopped process $pids on port $1"
 }
 
+# --- Claude Code ------------------------------------------------------------
+
+# Start a session (c), continue the last one in this folder (cc), or pick
+# one to resume (cr). cc shadows the C compiler in interactive shells only;
+# scripts and make still get /usr/bin/cc.
+alias c="claude"
+alias cc="claude --continue"
+alias cr="claude --resume"
+
+# Session in its own git worktree, so it can't touch your working copy.
+alias cw="claude --worktree"
+
+# Run in the background (cbg), then list background sessions (ca).
+alias cbg="claude --bg"
+alias ca="claude agents"
+
+# Plan mode: Claude reads and plans but can't edit until you approve.
+alias cplan="claude --permission-mode plan"
+
+# Resume the session linked to a PR: `cpr 21`, or `cpr` to pick from a list.
+alias cpr="claude --from-pr"
+
+# Commit message for the staged changes. Not `gcm`: oh-my-zsh's git plugin
+# uses that for `git checkout main`.
+cmsg() {
+  git diff --staged | claude -p "Write a concise commit message for this diff. Output only the message."
+}
+
+# Explain piped output and how to fix any errors: `npm run build 2>&1 | why`
+why() { claude -p "Explain this output and how to fix any errors in it." }
+
+# Quick one-shot answer without opening a session: `ask what does lsof -t do?`
+# noglob stops zsh from treating ? and * in the question as file patterns.
+# Low effort keeps quick questions fast and cheap.
+ask() { claude -p --effort low "$*" }
+alias ask="noglob ask"
+
+# Like ask, but for questions that need more reasoning. Slower and costs more.
+think() { claude -p --effort high "$*" }
+alias think="noglob think"
+
 # --- Google Cloud & Firebase ------------------------------------------------
 
 # Which account is signed in to gcloud, Firebase and GitHub.
